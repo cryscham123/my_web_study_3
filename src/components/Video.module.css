@@ -1,0 +1,15 @@
+.video{
+      display:flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1rem;
+      margin: 1rem;
+      width: min-content;
+}
+.img{
+      width: 15rem;
+      border-radius: 10px;
+}
+.title{
+      font-weight: bold;
+}

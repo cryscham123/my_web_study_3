@@ -1,0 +1,21 @@
+.header{
+      display:flex;
+      justify-content: space-between;
+      padding: 1.5rem;
+      background-color: var(--color-black);
+}
+.title{
+      font-weight: bold;
+      color: var(--color-primary);
+}
+.form{
+      border-radius: 5px;
+      overflow: hidden;
+}
+.search{
+      padding: 0.3rem 0.5rem;
+}
+.button{
+      background-color: var(--color-grey);
+      padding: 0.3rem 0.5rem;
+}
