@@ -1,23 +1,28 @@
-import React, { useEffect, useState } from 'react'
+import { useQuery } from '@tanstack/react-query';
+import React from 'react'
+import Youtube from '../api/youtube';
 import Video from './Video'
 
 export default function Videos({ mode, target}) {
-      const [videos,setVideos] = useState([]);
-      useEffect(() => {
-            fetch(`data/${mode}.json`)
-            .then((res) => res.json())
-            .then((data) => {
-                  setVideos(data.items);
-            });
-      },[mode])
+      const {isLoading,error,data:videos} = useQuery(['videos', target || ''], () => {
+            const youtube = new Youtube();
+            return youtube.getItems(mode,target);
+      },{
+            staleTime: 5000,
+            refetchOnWindowFocus: false
+      })
       return (
             <>
-                  {videos && videos.map(item => 
+                  {isLoading 
+                  ? 'loading...' 
+                  : error
+                  ? 'error'
+                  : videos.map(item => 
                   <Video 
                         key={item.id} 
                         id={item.id}
                         title={item.snippet.title}
-                        thumbnail={item.snippet.thumbnails.default.url}
+                        thumbnail={item.snippet.thumbnails.high}
                         channel={item.snippet.channelTitle}
                   />)}      
             </>

@@ -3,9 +3,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import DarkmodeProvider from './context/DarkmodeContext'
 import Root from './page/Root'
 import ErrorElement from './page/ErrorElement'
+import VideoDetails from './page/VideoDetail'
 import Home from './page/Home'
 import Search from './page/Search'
-import VideoDetails from './page/VideoDetail'
 
 const router = createBrowserRouter([
   {
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
 export default function App() {
   return (
     <DarkmodeProvider>
-      <RouterProvider router={router} />
+        <RouterProvider router={router} />
     </DarkmodeProvider>
   )
 }
